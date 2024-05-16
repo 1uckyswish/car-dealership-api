@@ -87,13 +87,21 @@ The project is structured as follows:
 
 ### Postman Scripts
 - **GET**: Postman scripts for testing GET requests.
-  - *(Add a screenshot of GET Postman scripts if applicable)*
+![Screenshot 2024-05-16 at 2 58 30 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/6481fa2a-74a7-4683-adaa-2b29fb81eeab)
+
+ 
 - **POST**: Postman scripts for testing POST requests.
-  - *(Add a screenshot of POST Postman scripts if applicable)*
+![Screenshot 2024-05-16 at 2 59 56 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/405583b9-aed1-40bc-92e7-c449af823c0d)
+
+
 - **PUT**: Postman scripts for testing PUT requests.
-  - *(Add a screenshot of PUT Postman scripts if applicable)*
+![Screenshot 2024-05-16 at 3 01 22 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/67a42eee-8d1c-4872-8117-ad39b5615e89)
+
+
 - **DELETE**: Postman scripts for testing DELETE requests.
-  - *(Add a screenshot of DELETE Postman scripts if applicable)*
+
+
+![Screenshot 2024-05-16 at 3 01 38 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/3a3fddc5-cdf4-4865-88ff-87d25a8dd64b)
 
 
 
