@@ -51,3 +51,36 @@ Welcome to the Car Dealership API project! This project aims to convert a comman
 The project is structured as follows:
 ![Screenshot 2024-05-16 at 2 21 48 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/ca2e5015-cbc6-4ea3-a829-1290473e3e50)
 
+
+### Database Configuration
+- **Database Configuration Overview**: Instructions for setting up the MySQL database connection.
+  - *(Add a screenshot showcasing the database configuration)*
+
+### DAOs (Data Access Objects)
+- **VehicleDao**: Responsible for managing vehicle data in the database.
+  - *(Add a screenshot of VehicleDao if applicable)*
+- **SalesContractDao**: Handles sales contract data in the database.
+  - *(Add a screenshot of SalesContractDao if applicable)*
+- **LeaseContractDao**: Manages lease contract data in the database.
+  - *(Add a screenshot of LeaseContractDao if applicable)*
+
+### Controllers
+- **Default Controller**: Handles default endpoints and routing.
+  - *(Add a screenshot of Default Controller if applicable)*
+- **Lease Contract Controller**: Manages endpoints related to lease contracts.
+  - *(Add a screenshot of Lease Contract Controller if applicable)*
+- **Sales Contract Controller**: Handles endpoints for sales contracts.
+  - *(Add a screenshot of Sales Contract Controller if applicable)*
+
+### Postman Scripts
+- **GET**: Postman scripts for testing GET requests.
+  - *(Add a screenshot of GET Postman scripts if applicable)*
+- **POST**: Postman scripts for testing POST requests.
+  - *(Add a screenshot of POST Postman scripts if applicable)*
+- **PUT**: Postman scripts for testing PUT requests.
+  - *(Add a screenshot of PUT Postman scripts if applicable)*
+- **DELETE**: Postman scripts for testing DELETE requests.
+  - *(Add a screenshot of DELETE Postman scripts if applicable)*
+
+
+
