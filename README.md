@@ -49,3 +49,5 @@ Welcome to the Car Dealership API project! This project aims to convert a comman
 ## Project Structure
 
 The project is structured as follows:
+![Screenshot 2024-05-16 at 2 21 48 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/ca2e5015-cbc6-4ea3-a829-1290473e3e50)
+
