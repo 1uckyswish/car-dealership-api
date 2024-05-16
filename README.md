@@ -104,4 +104,12 @@ The project is structured as follows:
 ![Screenshot 2024-05-16 at 3 01 38 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/3a3fddc5-cdf4-4865-88ff-87d25a8dd64b)
 
 
+## Interesting Piece of Code
+
+### Utility Method for Vehicle Object Creation
+
+The following code is an interesting piece from our project. It demonstrates a utility method that converts a `ResultSet` from a MySQL query into a `Vehicle` object. This method is part of the `VehicleUtils` class and significantly improves the readability and maintainability of our code by encapsulating the logic required to map database columns to a `Vehicle` object.
+
+![Screenshot 2024-05-16 at 3 15 07 PM](https://github.com/1uckyswish/car-dealership-api/assets/107442415/07f8a282-d0cb-41cc-8076-3ef56ffcf2f7)
+
 
