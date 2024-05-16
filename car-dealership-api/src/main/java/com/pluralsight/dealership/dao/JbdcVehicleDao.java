@@ -15,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The JbdcVehicleDao class implements the VehicleDao interface using JDBC for data access.
+ * The JbdcVehicleDao class implements the VehicleDao interface using JDBC for
+ * data access.
  */
 @Component
-public class JbdcVehicleDao implements VehicleDao{
+public class JbdcVehicleDao implements VehicleDao {
 
     private DataSource dataSource;
 
@@ -41,22 +42,22 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getAllVehicles() {
         List<Vehicle> vehicles = new ArrayList<>();
         String sql = "SELECT * FROM vehicle";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        ResultSet resultSet = preparedStatement.executeQuery())
-        {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
                 vehicles.add(VehicleUtils.resultSetToVehicle(resultSet));
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error fetching vehicles: " + e.getMessage());
         }
         return vehicles;
     }
 
     /**
-     * Retrieves a list of vehicles within the specified price range from the database.
+     * Retrieves a list of vehicles within the specified price range from the
+     * database.
      *
      * @param minPrice The minimum price.
      * @param maxPrice The maximum price.
@@ -66,8 +67,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getByPrice(double minPrice, double maxPrice) {
         List<Vehicle> vehicles = new ArrayList<>();
         String sqlQuery = "SELECT * FROM vehicle WHERE price BETWEEN ? AND ?;";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setDouble(1, minPrice);
             preparedStatement.setDouble(2, maxPrice);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -81,7 +82,8 @@ public class JbdcVehicleDao implements VehicleDao{
     }
 
     /**
-     * Retrieves a list of vehicles with the specified make and model from the database.
+     * Retrieves a list of vehicles with the specified make and model from the
+     * database.
      *
      * @param make  The make of the vehicles.
      * @param model The model of the vehicles.
@@ -91,8 +93,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getByMakeModel(String make, String model) {
         List<Vehicle> vehicles = new ArrayList<>();
         String sqlQuery = "SELECT * FROM vehicle WHERE make = ? AND model = ?;";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setString(1, make);
             preparedStatement.setString(2, model);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -106,7 +108,8 @@ public class JbdcVehicleDao implements VehicleDao{
     }
 
     /**
-     * Retrieves a list of vehicles within the specified year range from the database.
+     * Retrieves a list of vehicles within the specified year range from the
+     * database.
      *
      * @param minYear The minimum year.
      * @param maxYear The maximum year.
@@ -116,8 +119,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getByYear(int minYear, int maxYear) {
         List<Vehicle> vehicles = new ArrayList<>();
         String sqlQuery = "SELECT * FROM vehicle WHERE year BETWEEN ? AND ?;";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setInt(1, minYear);
             preparedStatement.setInt(2, maxYear);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -131,7 +134,8 @@ public class JbdcVehicleDao implements VehicleDao{
     }
 
     /**
-     * Retrieves a list of vehicles within the specified mileage range from the database.
+     * Retrieves a list of vehicles within the specified mileage range from the
+     * database.
      *
      * @param minMileage The minimum mileage.
      * @param maxMileage The maximum mileage.
@@ -141,8 +145,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getByMileage(int minMileage, int maxMileage) {
         List<Vehicle> vehicles = new ArrayList<>();
         String sqlQuery = "SELECT * FROM vehicle WHERE odometer BETWEEN ? AND ?;";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setInt(1, minMileage);
             preparedStatement.setInt(2, maxMileage);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -165,8 +169,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getByColor(String color) {
         List<Vehicle> vehicles = new ArrayList<>();
         String sqlQuery = "SELECT * FROM vehicle WHERE color = ?;";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setString(1, color);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -188,8 +192,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public List<Vehicle> getByType(String type) {
         List<Vehicle> vehicles = new ArrayList<>();
         String sqlQuery = "SELECT * FROM vehicle WHERE type = ?;";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setString(1, type);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -212,8 +216,8 @@ public class JbdcVehicleDao implements VehicleDao{
         String sqlQuery = "INSERT INTO vehicle (vin, year, make, model, type, color, odometer, price, sold) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setString(1, vehicle.getVin());
             preparedStatement.setInt(2, vehicle.getYear());
             preparedStatement.setString(3, vehicle.getMake());
@@ -236,14 +240,16 @@ public class JbdcVehicleDao implements VehicleDao{
      * @param vin     The VIN of the vehicle to update.
      * @param vehicle The updated vehicle information.
      * @return The updated vehicle.
-     * @throws VehicleNotFoundException if the vehicle with the specified VIN is not found.
+     * @throws VehicleNotFoundException if the vehicle with the specified VIN is not
+     *                                  found.
      */
     @Override
     public Vehicle updateVehicle(String vin, Vehicle vehicle) {
-        String sqlQuery = "UPDATE vehicle SET year = ?, make = ?, model = ?, type = ?, color = ?, odometer = ?, price = ?, sold = ? " +
+        String sqlQuery = "UPDATE vehicle SET year = ?, make = ?, model = ?, type = ?, color = ?, odometer = ?, price = ?, sold = ? "
+                +
                 "WHERE vin = ?";
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             // Check if the vehicle with the provided VIN exists in the database
             if (!vehicleExists(vin)) {
                 throw new VehicleNotFoundException("Vehicle with VIN " + vin + " not found");
@@ -275,8 +281,8 @@ public class JbdcVehicleDao implements VehicleDao{
     public void deleteVehicle(String vin) {
         String sqlQuery = "DELETE FROM vehicle WHERE vin = ?";
 
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
             preparedStatement.setString(1, vin);
             preparedStatement.executeUpdate();
         } catch (Exception e) {

@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The JbdcLeaseContractDao class implements the LeaseContractDao interface using JDBC for data access.
+ * The JbdcLeaseContractDao class implements the LeaseContractDao interface
+ * using JDBC for data access.
  */
 @Component
-public class JbdcLeaseContractDao implements LeaseContractDao{
+public class JbdcLeaseContractDao implements LeaseContractDao {
 
     private DataSource dataSource;
 
@@ -51,7 +52,8 @@ public class JbdcLeaseContractDao implements LeaseContractDao{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Log an error or return an appropriate message if no contract with the given ID is found
+        // Log an error or return an appropriate message if no contract with the given
+        // ID is found
         System.err.println("Error: Failed to fetch lease contract with ID " + id);
         return null;
     }
@@ -82,7 +84,8 @@ public class JbdcLeaseContractDao implements LeaseContractDao{
     }
 
     /**
-     * Adds a new lease contract for the vehicle with the specified VIN to the database.
+     * Adds a new lease contract for the vehicle with the specified VIN to the
+     * database.
      *
      * @param vin The VIN of the vehicle to add a lease contract for.
      */

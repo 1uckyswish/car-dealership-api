@@ -12,9 +12,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * The JbdcSalesContractDao class implements the SalesContractDao interface using JDBC for data access.
+ * The JbdcSalesContractDao class implements the SalesContractDao interface
+ * using JDBC for data access.
  */
 @Component
 public class JbdcSalesContractDao implements SalesContractDao {
@@ -84,7 +84,8 @@ public class JbdcSalesContractDao implements SalesContractDao {
     }
 
     /**
-     * Adds a new sales contract for the vehicle with the specified VIN to the database.
+     * Adds a new sales contract for the vehicle with the specified VIN to the
+     * database.
      *
      * @param vin The VIN of the vehicle to add a sales contract for.
      */
