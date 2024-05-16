@@ -12,16 +12,31 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * The JbdcSalesContractDao class implements the SalesContractDao interface using JDBC for data access.
+ */
 @Component
 public class JbdcSalesContractDao implements SalesContractDao {
 
     private DataSource dataSource;
 
+    /**
+     * Constructs a new JbdcSalesContractDao object with the specified data source.
+     *
+     * @param dataSource The data source to use for database connection.
+     */
     @Autowired
     public JbdcSalesContractDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Retrieves a sales contract by its ID from the database.
+     *
+     * @param id The ID of the sales contract to retrieve.
+     * @return The sales contract with the specified ID, or null if not found.
+     */
     @Override
     public SaleContract getContractById(String id) {
         String query = "SELECT * FROM sales_contracts WHERE sales_id = ?";
@@ -42,7 +57,11 @@ public class JbdcSalesContractDao implements SalesContractDao {
         return null;
     }
 
-
+    /**
+     * Retrieves a list of all sales contracts from the database.
+     *
+     * @return A list of all sales contracts.
+     */
     @Override
     public List<SaleContract> getAllContracts() {
 
@@ -64,6 +83,11 @@ public class JbdcSalesContractDao implements SalesContractDao {
         return null;
     }
 
+    /**
+     * Adds a new sales contract for the vehicle with the specified VIN to the database.
+     *
+     * @param vin The VIN of the vehicle to add a sales contract for.
+     */
     @Override
     public void addContract(String vin) {
         try (Connection connection = dataSource.getConnection()) {

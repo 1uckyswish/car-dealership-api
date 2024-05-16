@@ -2,6 +2,9 @@ package com.pluralsight.dealership.models;
 
 import java.text.DecimalFormat;
 
+/**
+ * The Vehicle class represents a vehicle with various attributes such as VIN, year, make, model, etc.
+ */
 public class Vehicle {
     private String vin;
     private int year;
@@ -13,6 +16,20 @@ public class Vehicle {
     private double price;
     private String sold;
 
+
+    /**
+     * Constructs a new Vehicle object with the specified attributes.
+     *
+     * @param vin      The VIN (Vehicle Identification Number) of the vehicle.
+     * @param year     The year of manufacture of the vehicle.
+     * @param make     The make of the vehicle (e.g., Toyota, Honda).
+     * @param model    The model of the vehicle.
+     * @param type     The type of vehicle (e.g., sedan, SUV).
+     * @param color    The color of the vehicle.
+     * @param odometer The odometer reading of the vehicle.
+     * @param price    The price of the vehicle.
+     * @param sold     The status indicating whether the vehicle is sold or not.
+     */
     public Vehicle(String vin, int year, String make, String model, String type, String color, int odometer, double price, String sold) {
         this.vin = vin;
         this.year = year;

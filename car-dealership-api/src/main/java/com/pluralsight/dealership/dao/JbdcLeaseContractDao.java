@@ -12,16 +12,30 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The JbdcLeaseContractDao class implements the LeaseContractDao interface using JDBC for data access.
+ */
 @Component
 public class JbdcLeaseContractDao implements LeaseContractDao{
 
     private DataSource dataSource;
 
+    /**
+     * Constructs a new JbdcLeaseContractDao object with the specified data source.
+     *
+     * @param dataSource The data source to use for database connection.
+     */
     @Autowired
     public JbdcLeaseContractDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Retrieves a lease contract by its ID from the database.
+     *
+     * @param id The ID of the lease contract to retrieve.
+     * @return The lease contract with the specified ID, or null if not found.
+     */
     @Override
     public LeaseContract getContractById(String id) {
         String query = "SELECT * FROM lease_contracts WHERE lease_id = ?";
@@ -42,6 +56,11 @@ public class JbdcLeaseContractDao implements LeaseContractDao{
         return null;
     }
 
+    /**
+     * Retrieves a list of all lease contracts from the database.
+     *
+     * @return A list of all lease contracts.
+     */
     @Override
     public List<LeaseContract> getAllContracts() {
         String query = "SELECT * FROM lease_contracts";
@@ -62,6 +81,11 @@ public class JbdcLeaseContractDao implements LeaseContractDao{
         return new ArrayList<>(); // Return an empty list as fallback
     }
 
+    /**
+     * Adds a new lease contract for the vehicle with the specified VIN to the database.
+     *
+     * @param vin The VIN of the vehicle to add a lease contract for.
+     */
     @Override
     public void addContract(String vin) {
         try (Connection connection = dataSource.getConnection()) {

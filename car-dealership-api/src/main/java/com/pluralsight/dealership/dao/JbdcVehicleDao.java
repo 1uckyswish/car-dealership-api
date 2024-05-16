@@ -14,16 +14,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The JbdcVehicleDao class implements the VehicleDao interface using JDBC for data access.
+ */
 @Component
 public class JbdcVehicleDao implements VehicleDao{
 
     private DataSource dataSource;
 
+    /**
+     * Constructs a new JbdcVehicleDao object with the specified data source.
+     *
+     * @param dataSource The data source to use for database connection.
+     */
     @Autowired
     public JbdcVehicleDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Retrieves a list of all vehicles from the database.
+     *
+     * @return A list of all vehicles.
+     */
     @Override
     public List<Vehicle> getAllVehicles() {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -42,6 +55,13 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
+    /**
+     * Retrieves a list of vehicles within the specified price range from the database.
+     *
+     * @param minPrice The minimum price.
+     * @param maxPrice The maximum price.
+     * @return A list of vehicles within the specified price range.
+     */
     @Override
     public List<Vehicle> getByPrice(double minPrice, double maxPrice) {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -60,6 +80,13 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
+    /**
+     * Retrieves a list of vehicles with the specified make and model from the database.
+     *
+     * @param make  The make of the vehicles.
+     * @param model The model of the vehicles.
+     * @return A list of vehicles with the specified make and model.
+     */
     @Override
     public List<Vehicle> getByMakeModel(String make, String model) {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -78,6 +105,13 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
+    /**
+     * Retrieves a list of vehicles within the specified year range from the database.
+     *
+     * @param minYear The minimum year.
+     * @param maxYear The maximum year.
+     * @return A list of vehicles within the specified year range.
+     */
     @Override
     public List<Vehicle> getByYear(int minYear, int maxYear) {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -96,6 +130,13 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
+    /**
+     * Retrieves a list of vehicles within the specified mileage range from the database.
+     *
+     * @param minMileage The minimum mileage.
+     * @param maxMileage The maximum mileage.
+     * @return A list of vehicles within the specified mileage range.
+     */
     @Override
     public List<Vehicle> getByMileage(int minMileage, int maxMileage) {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -114,6 +155,12 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
+    /**
+     * Retrieves a list of vehicles with the specified color from the database.
+     *
+     * @param color The color of the vehicles.
+     * @return A list of vehicles with the specified color.
+     */
     @Override
     public List<Vehicle> getByColor(String color) {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -131,6 +178,12 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
+    /**
+     * Retrieves a list of vehicles with the specified type from the database.
+     *
+     * @param type The type of the vehicles.
+     * @return A list of vehicles with the specified type.
+     */
     @Override
     public List<Vehicle> getByType(String type) {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -148,7 +201,12 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicles;
     }
 
-
+    /**
+     * Adds a new vehicle to the database.
+     *
+     * @param vehicle The vehicle to add.
+     * @return The added vehicle.
+     */
     @Override
     public Vehicle addVehicle(Vehicle vehicle) {
         String sqlQuery = "INSERT INTO vehicle (vin, year, make, model, type, color, odometer, price, sold) " +
@@ -172,6 +230,14 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicle;
     }
 
+    /**
+     * Updates an existing vehicle in the database.
+     *
+     * @param vin     The VIN of the vehicle to update.
+     * @param vehicle The updated vehicle information.
+     * @return The updated vehicle.
+     * @throws VehicleNotFoundException if the vehicle with the specified VIN is not found.
+     */
     @Override
     public Vehicle updateVehicle(String vin, Vehicle vehicle) {
         String sqlQuery = "UPDATE vehicle SET year = ?, make = ?, model = ?, type = ?, color = ?, odometer = ?, price = ?, sold = ? " +
@@ -200,6 +266,11 @@ public class JbdcVehicleDao implements VehicleDao{
         return vehicle;
     }
 
+    /**
+     * Deletes a vehicle from the database.
+     *
+     * @param vin The VIN of the vehicle to delete.
+     */
     @Override
     public void deleteVehicle(String vin) {
         String sqlQuery = "DELETE FROM vehicle WHERE vin = ?";
@@ -213,6 +284,12 @@ public class JbdcVehicleDao implements VehicleDao{
         }
     }
 
+    /**
+     * Checks if a vehicle with the specified VIN exists in the database.
+     *
+     * @param vin The VIN of the vehicle to check.
+     * @return True if the vehicle exists, false otherwise.
+     */
     private boolean vehicleExists(String vin) {
         String query = "SELECT COUNT(*) FROM vehicle WHERE vin = ?";
         try (Connection connection = dataSource.getConnection();
